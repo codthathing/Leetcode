@@ -1,19 +1,27 @@
 #include <stdio.h>
 
-int main() {
-  int nums[] = {3, 2, 2, 3, 6};
-  int expectedNums[5];
+int removeElements(int nums[], int numsSize, int val) {
+  int j = 0;
 
-  for (int i = 0; i < sizeof(nums) / sizeof(nums[0]); i++) {
-    for (int j = 0; j < 3; j++) {
-      if (nums[i] != 3) {
-        expectedNums[j] = nums[i];
-      }
+  for (int i = 0; i < numsSize; i++) {
+    if (nums[i] != val) {
+      nums[j] = nums[i];
+      j++;
     }
   }
 
-  for (int i = 0; i < 3; i++) {
-    printf("%d", expectedNums[i]);
+  return j;
+}
+
+int main() {
+  int nums[] = {3, 2, 2, 3};
+  int actualLength = sizeof(nums) / sizeof(nums[0]);
+  int val = 3;
+
+  int k = removeElements(nums, actualLength, val);
+
+  for (int i = 0; i < k; i++) {
+    printf("%d", nums[i]);
   }
 
   return 0;
