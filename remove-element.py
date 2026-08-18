@@ -4,6 +4,7 @@ class Solution:
 
         for num in nums:
             if num != val:
+                nums[expectedNums] = num
                 expectedNums += 1
 
         return expectedNums
