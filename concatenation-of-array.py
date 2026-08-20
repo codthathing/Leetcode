@@ -1,12 +1,12 @@
 class Solution:
   def getConcatenation(self, nums: list[int]) -> list[int]:
-    ans: list[int] = []
-    numsLength: int = len(nums)
+    length: int = len(nums)
+    ans: list[int] = [0] * (2 * length)
 
-    for i, n in enumerate(nums):
-      ans.insert(i, n)
-      ans.insert((i + numsLength), n)
-
+    for i in range(length):
+      ans[i] = nums[i]
+      ans[i + length] = nums[i]
+        
     return ans
 
 newArrayObject = Solution()

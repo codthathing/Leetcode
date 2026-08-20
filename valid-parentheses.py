@@ -1,7 +1,7 @@
-class Solution(object):
-  def isValid(self, s):
-    stack = []
-    joinBrackets = {")": "(", "}": "{", "]": "["}
+class Solution:
+  def isValid(self, s: list[str]) -> bool:
+    stack: list[str] = []
+    joinBrackets: dict[str, str] = {")": "(", "}": "{", "]": "["}
 
     for bracket in s:
       if bracket in joinBrackets:
@@ -12,4 +12,4 @@ class Solution(object):
       else:
         stack.append(bracket)
 
-    return True if not stack else False
+    return bool(not stack)
