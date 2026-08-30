@@ -1,16 +1,16 @@
-class Solution(object):
-    def countStudents(self, students, sandwiches):
+class Solution:
+    def countStudents(self, students: list[int], sandwiches: list[int]) -> int:
         studentsLeft = False
 
         while not studentsLeft:
-            lengthOfSandwich = len(sandwiches)
+            lengthOfSandwich: int = len(sandwiches)
 
-            for j in range(len(students)):
+            for _ in range(len(students)):
                 if students[0] == sandwiches[0]:
                     sandwiches.pop(0)
                     students.pop(0)
                 else:
-                    firstStudent = students[0]
+                    firstStudent: int = students[0]
                     for i in range(len(students) - 1):
                         students[i] = students[i + 1]
 
@@ -22,8 +22,8 @@ class Solution(object):
         return len(students)
     
 
-students = [1,1,1,0,0,1]
-sandwiches = [1,0,0,0,1,1]
+students: list[int] = [1,1,1,0,0,1]
+sandwiches: list[int] = [1,0,0,0,1,1]
 
 practice = Solution()
 print(practice.countStudents(students, sandwiches))

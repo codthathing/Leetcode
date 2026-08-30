@@ -1,16 +1,15 @@
-class MyStack(object):
+class MyStack:
+    def __init__(self) -> None:
+        self.stack: list[int] = []
 
-    def __init__(self):
-        self.stack = []
-
-    def push(self, x):
+    def push(self, x: int) -> None:
         self.stack.append(x)
 
-    def pop(self):
+    def pop(self) -> int:
         return self.stack.pop()
 
-    def top(self):
+    def top(self) -> int:
         return self.stack[len(self.stack) - 1]
 
-    def empty(self):
-        return True if len(self.stack) == 0 else False
+    def empty(self) -> bool:
+        return len(self.stack) == 0

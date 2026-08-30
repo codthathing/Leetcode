@@ -1,8 +1,8 @@
-class Solution(object):
-    def __init__(self):
-        self.stepsDicts = {}
+class Solution:
+    def __init__(self) -> None:
+        self.stepsDicts: dict[int, int] = {}
 
-    def climbStairs(self, n):
+    def climbStairs(self, n: int) -> int:
         possibleStepsTaken = 0
 
         if n in self.stepsDicts:
@@ -13,7 +13,7 @@ class Solution(object):
         elif n == 2:
             possibleStepsTaken += 2
         else:
-            result = self.climbStairs(n - 2) + self.climbStairs(n - 1)
+            result: int = self.climbStairs(n - 2) + self.climbStairs(n - 1)
             self.stepsDicts[n] = result
 
             return result

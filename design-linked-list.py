@@ -1,28 +1,29 @@
-class MyLinkedList(object):
+class MyLinkedList:
 
-    class NewNode():
-        def __init__(self, value):
-            self.value = value
-            self.next = None
+    class NewNode:
+        def __init__(self, value: int) -> None:
+            self.value: int = value
+            self.next: MyLinkedList.NewNode | None = None
 
-    def __init__(self):
-        self.head = None
+    def __init__(self) -> None:
+        self.head: MyLinkedList.NewNode | None = None
         self.count = 0
 
-    def get(self, index):
+    def get(self, index: int) -> int | None:
         if self.head and index <= self.count - 1:
-            temp = self.head
+            temp: MyLinkedList.NewNode | None = self.head
 
-            for i in range(index):
-                temp = temp.next
-            
-            return temp.value
+            for _ in range(index):
+                if temp:
+                    temp = temp.next
+            if temp:
+                return temp.value
         else:
             return -1
         
 
-    def addAtHead(self, val):
-        newNode = self.NewNode(val)
+    def addAtHead(self, val: int) -> None:
+        newNode: MyLinkedList.NewNode = self.NewNode(val)
 
         newNode.next = self.head
         self.head = newNode
@@ -30,13 +31,14 @@ class MyLinkedList(object):
         self.count += 1
         
 
-    def addAtTail(self, val):
-        newNode = self.NewNode(val)
+    def addAtTail(self, val: int) -> None:
+        newNode: MyLinkedList.NewNode = self.NewNode(val)
 
         if not self.head:
             self.head = newNode
         else:
-            temp = self.head
+            temp: MyLinkedList.NewNode = self.head
+
             while temp.next:
                 temp = temp.next
             temp.next = newNode
@@ -44,7 +46,7 @@ class MyLinkedList(object):
         self.count += 1
         
 
-    def addAtIndex(self, index, val):
+    def addAtIndex(self, index: int, val: int) -> None:
         if index > self.count:
             return
 
@@ -55,33 +57,39 @@ class MyLinkedList(object):
         else:
             newNode = self.NewNode(val)
 
-            temp = self.head
+            temp: MyLinkedList.NewNode | None = self.head
 
-            for i in range(index - 1):
-                temp = temp.next
+            for _ in range(index - 1):
+                if temp:
+                    temp = temp.next
 
-            newNode.next = temp.next
-            temp.next = newNode
-            self.count += 1
+            if temp:
+                newNode.next = temp.next
+                temp.next = newNode
+                self.count += 1
 
         
 
-    def deleteAtIndex(self, index):
+    def deleteAtIndex(self, index: int) -> None:
         if index >= self.count:
             return
         
-        temp = self.head
+        temp: MyLinkedList.NewNode | None = self.head
 
-        if index == 0:
-            self.head = self.head.next
+        if index == 0 and temp:
+            self.head = temp.next
         elif index == self.count - 1:
-            for i in range(index - 1):
-                temp = temp.next
-            temp.next = None
+            for _ in range(index - 1):
+                if temp:
+                    temp = temp.next
+            if temp:
+                temp.next = None
         else:
-            for i in range(index - 1):
-                temp = temp.next
-            temp.next = temp.next.next
+            for _ in range(index - 1):
+                if temp:
+                    temp = temp.next
+            if temp and temp.next:
+                temp.next = temp.next.next
 
 
         self.count -= 1

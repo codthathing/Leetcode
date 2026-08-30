@@ -1,11 +1,17 @@
-def reverseList(head):
-  currentNode = head
-  prevNode = None
+class ListNode:
+  def __init__(self, val:int=0, next: None=None) -> None:
+    self.val: int = val
+    self.next: ListNode | None = next
 
-  while currentNode:
-    nextNode = currentNode.next
-    currentNode.next = prevNode
-    prevNode = currentNode
-    currentNode = nextNode
+class Solution:
+  def reverseList(self, head: ListNode) -> None | ListNode:
+    currentNode: ListNode | None = head
+    prevNode = None
 
-  return prevNode
+    while currentNode:
+      nextNode: ListNode | None = currentNode.next
+      currentNode.next = prevNode
+      prevNode: ListNode| None = currentNode
+      currentNode = nextNode
+
+    return prevNode
